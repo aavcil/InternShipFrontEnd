@@ -1,0 +1,27 @@
+<pdf-viewer [src]="pdfSrc" 
+[render-text]="true"
+style="display: block;"
+[show-all]="false"
+[page]="page"
+(after-load-complete)="callBackFn($event)"
+[fit-to-page]="true"
+[original-size]="true"
+[rotation]="rotateDegree"
+></pdf-viewer>
+
+<div style="position: relative;text-align: center" >
+  <button type="button" class="" (click)="rotateLeft()" style="width: 5%;height:50px;">
+    <img src="../../assets/images/icons/rotate_left.png" style="width: 50% ;height: 50px;"/>
+  </button>
+<button type="button" class="" (click)="geri()"  *ngIf="page!=1"  style="width: 5%;height:50px;">
+  <img src="../../assets/images/icons/left.png" style="width: 50% ;height: 50px;"/>
+  </button>
+
+<button type="button" class="" *ngIf="page!=pageCount" (click)="ileri()" style="width: 5%;height:50px;">
+    <img src="../../assets/images/icons/right.png" style="width: 50% ;height: 50px;"/>
+    </button>
+
+    <button type="button" class="" (click)="rotateRight()" style="width: 5%;height:50px;">
+      <img src="../../assets/images/icons/rotate_right.png" style="width: 50% ;height: 50px;"/>
+    </button>
+</div>

@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <app-sidebar *ngIf="url!='/presentationTime'"></app-sidebar>
+  <app-navbar *ngIf="url!='/presentationTime'"></app-navbar>
+  <router-outlet *ngIf="this.isApproved"></router-outlet>
+
+  <div class="panel-header panel-header-sm">
+  </div>
+  <div class="main-panel" *ngIf="!this.isApproved">
+    <div class="main-content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="title">Staj Başvuru Onayı</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                <ngb-alert [dismissible]="false" type="warning" *ngIf="this.recourse.isApproved==0">
+                  <strong>Uyarı!</strong> Staj başvurunuz <strong> beklemede. </strong>
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type="success" *ngIf="this.recourse.isApproved==1">
+                  <strong>Uyarı!</strong> Staj başvurunuz <strong>onaylanmıştır.</strong>
+                </ngb-alert>
+                <ngb-alert [dismissible]="false" type="danger" *ngIf="this.recourse.isApproved==2">
+                  <strong>Uyarı!</strong> Staj başvurunuz <strong> reddedilmiştir.</strong>
+                </ngb-alert>
+              </p>
+              <br>
+              <br>
+              <div class=row>
+                <div class="col-md-6">
+                  <img src="{{this.imageUrl+this.recourse.url}}" class="logo" alt="Cinque Terre">
+
+                </div>
+                <div class="col-md-6">
+                  <strong> Başvuru Tarihi : </strong> {{this.recourse.date | date: 'fullDate'}}<br>
+                  <strong> Onay Durumu : </strong>
+                  <span class="badge badge-success" *ngIf="this.recourse.isApproved==1">Onaylandı</span>
+                  <span class="badge badge-warning" *ngIf="this.recourse.isApproved==0">Onay Bekliyor</span>
+                  <span class="badge badge-danger" *ngIf="this.recourse.isApproved==2">Reddedildi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

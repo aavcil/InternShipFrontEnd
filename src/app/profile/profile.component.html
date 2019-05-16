@@ -1,0 +1,112 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-panel">
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Firma Bilgileri</h5>
+          </div>
+          <div class="card-body" *ngIf="this.student.companies">
+            <form>            
+              <div class="row">
+                <div class="col-md-8">
+                    <img src="{{this.imageUrl+this.student.companies.logoUrl}}" class="logo" alt="Cinque Terre">               
+
+                </div>
+                <div class="col-md-4">
+                
+                  <button type="button" class="btn btn-primary">
+                      Çalışan Mühendis Sayısı <span class="badge badge-light">  {{this.student.companies.personelCount}}</span>
+                      <span class="sr-only">unread messages</span>
+                    </button>
+                </div>
+
+              </div>
+              <div class="row">
+                
+                  <div class="col-md-12 pr-1">
+                    <div class="form-group">
+                      <label>Firma</label>
+                      <input type="text" class="form-control" disabled placeholder="Company"
+                        value="{{this.student.companies.name}}">
+                    </div>
+                  </div>
+            
+                </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Adres</label>
+                    <input type="text" class="form-control" disabled placeholder="Home Address"
+                      value="{{this.student.companies.address}}">
+                  </div>
+                </div>
+           
+              </div>
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="text" class="form-control" disabled placeholder="City" value="{{this.student.companies.telephone}}">
+                  </div>
+                </div>
+                <div class="col-md-6 px-1">
+                  <div class="form-group">
+                    <label>Mail Adresi</label>
+                    <input type="text" class="form-control" disabled placeholder="Country" value="{{this.student.companies.mail}}">
+                  </div>
+                </div>
+           
+              </div>
+           
+            </form>
+          </div>
+          <div class="card-body" *ngIf="!this.student.companies">
+              <p>
+                  <ngb-alert [dismissible]="false">
+                    <strong>Uyarı!</strong> Firma seçimi yapılmamıştır. Yapmak için <b style="cursor: pointer;" [routerLink]="['/internShip']" routerLinkActive="router-link-active" >tıklayın</b>.
+                  </ngb-alert>
+                </p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-user">
+          <div class="image">
+            <img src="../assets/img/bg5.jpg" alt="...">
+          </div>
+          <div class="card-body">
+            <div class="author">
+              <a href="#">
+                <img class="avatar border-gray" src="{{this.imageUrl+this.student.profilePicture}}" alt="...">
+                <h5 class="title">{{this.student.name}} {{this.student.surname}}</h5>
+              </a>
+              <p class="description" style="text-transform: lowercase">
+                @{{this.student.name}}{{this.student.surname}}
+              </p>
+            </div>
+            <p class="description text-center">
+              "Lamborghini Mercy
+              <br> Your chick she so thirsty
+              <br> I'm in that two seat Lambo"
+            </p>
+          </div>
+          <hr>
+          <div class="button-container">
+            <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+            <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+              <i class="fab fa-twitter"></i>
+            </button>
+            <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+              <i class="fab fa-google-plus-g"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-panel">
+  <div class="main-content">
+    <div class="row">
+
+
+       <div class="col-lg-12" >
+        <h3>Staj Sunumu Ekle</h3>
+        <div style="position: relative; height: 100%; background-color: white;border-radius: 10px;">
+
+          <blockquote style="width:98%;padding-top: 10px;margin: auto;">
+            <p class="blockquote blockquote-primary">
+              Staj sunumu yapabilmek için öncelikle sunum dosyasını upload etmeniz gerekmektedir.
+              <br>
+              <br>
+              <small>
+                NOT: Staj sunumunu <b>"PDF"</b> türünde sisteme yükleyiniz.
+              </small>
+            </p>
+          </blockquote>
+          <div class="input-group mb-3 inputGroup">
+            <div class="input-group-prepend">
+              <span class="input-group-text2" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input #file type="file" class="custom-file-input"  (change)="upload(file.files)" accept="application/pdf">
+              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+
+            <div style="width: 100%;margin:2px;" *ngIf="prog>0">
+            <p><ngb-progressbar showValue="true" type="success" [value]="prog"></ngb-progressbar></p>
+          </div>
+            <span style="font-weight:bold;color:green;" *ngIf="message">
+              {{message}}
+            </span>
+            <button class="btn btn-block btn-secondary" (click)="add()" type="button">Ekle</button>
+        
+          </div>
+        </div>
+
+      </div> 
+
+    </div>
+  </div>
+</div>

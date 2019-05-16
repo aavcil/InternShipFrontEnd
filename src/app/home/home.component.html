@@ -1,0 +1,84 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-panel">
+
+  <div class="main-content">
+  
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Staj</h5>
+            <h4 class="card-title">Günlerin Doluluk Oranı</h4>
+            <!-- <div ngbDropdown>
+              <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret"
+                ngbDropdownToggle>
+                <i class="now-ui-icons loader_gear"></i>
+              </button>
+              <div ngbDropdownMenu class="dropdown-menu-right">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item text-danger" href="#">Remove Data</a>
+              </div>
+            </div> -->
+          </div>
+          <div class="card-body">
+            <div class="chart-area" style="text-align: center !important;">
+              <circle-progress [percent]="count" [renderOnClick]="false"> </circle-progress><br><br>
+               <h5> <b>{{Days.length}}</b> günlük stajınızdan <b>{{count/5}}</b> günün bilgisini girdiniz.</h5>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Staj</h5>
+            <h4 class="card-title">Akademisyen Atamaları</h4>
+            <!-- <div ngbDropdown>
+              <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret"
+                ngbDropdownToggle>
+                <i class="now-ui-icons loader_gear"></i>
+              </button>
+              <div ngbDropdownMenu class="dropdown-menu-right">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item text-danger" href="#">Remove Data</a>
+              </div>
+            </div> -->
+          </div>
+          <div class="card-body" >
+            <div class="chart-area" style="top:52px;padding:0px 20px;position: relative;" *ngIf="assignment">
+              Sorumlu Akademisyen<br>
+              <h3> {{assignment.title}} {{assignment.name}} {{assignment.surname}}</h3>
+            </div>
+            <div class="chart-area" style="top:52px;padding:0px 20px;position: relative;" *ngIf="!assignment">
+                Henüz Akademisyen Atamaları Yapılmamıştır.
+
+              </div>
+
+          </div>
+          <div class="card-footer">
+            <div class="stats" *ngIf="timer/60==0">
+              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+            </div>
+            <div class="stats" *ngIf="timer/60!=0">
+              <i class="now-ui-icons arrows-1_refresh-69" (click)="getAssignment()"></i> {{timer}} minute ago
+            </div>
+          </div>
+        </div>
+      </div>
+   
+    </div>
+ 
+
+  </div>
+</div>

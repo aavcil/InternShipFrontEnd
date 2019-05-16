@@ -1,0 +1,25 @@
+<!-- <div class="bgImage">
+
+  <div class="selected">
+    a
+    a
+    a
+  </div>
+</div> -->
+
+<div class="vertical-center">
+  <!-- 
+  ^--- Added class  -->
+  <div class="container">
+      <span class="badge badge-light" style="width:25% !important;font-size: 1.5em">Staj Sistemi Giriş</span><br>
+    <button type="button" class="btn btn-labeled btn-default" (click)="navigate(0)">
+      <span class="btn-label"><i class="fas fa-user-graduate"></i></span>
+      Öğrenci Girişi</button><br>
+      <button type="button" class="btn btn-labeled btn-default" (click)="navigate(1)">
+        <span class="btn-label"><i class="fas fa-university"></i></span>
+        Akademisyen Girişi</button>
+
+  </div>
+</div>
+
+<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>

@@ -1,0 +1,170 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-panel" *ngIf="isFull">
+  <div class="main-content">
+    <div class="row">
+     
+
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Staj Yapılan Firma Bilgileri</h5>
+          </div>
+          <div class="card-body">
+            <div class="input-group no-border" style="width: 50%;left: 25%;">
+              <input type="text" value="" class="form-control" placeholder="Search..." [(ngModel)]="term">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="now-ui-icons ui-1_zoom-bold"></i>
+                </div>
+              </div>
+            </div>
+            <div style=" height:100px;overflow-y: scroll;position: relative;left:26%; width: 50%">
+              <div class="d-flex flex-column" style="position: relative;" *ngFor="let item of items | filter:term">
+                <div class="p-2 searchText" (click)="open(content,item)">
+                  {{item.name}}
+                </div>
+              </div>
+            </div>
+            <br><br>
+            <div class="alert alert-info" style="position: relative;left: 26%;width: 50%;">
+                <span>
+                  <b> Not - </b> Aradığınız firma sistemde kayıtlı değilse eklemek için <b style="cursor: pointer" (click)="input()">tıklayın.</b></span>
+                <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+              </div>
+            <br><br>
+
+            <div class="card-header">
+                <h5 class="title">Staj Yapılan Tarih Aralığı</h5>
+              </div>
+            <div class="input-group" *ngFor="let item of dates">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" name="x" value="{{item.id}}" (change)="onItemChange(item)">
+                  </div>
+                </div>
+                <input type="text" class="form-control" readonly
+                  value="{{item.startDate |date:'fullDate'}} - {{item.finishDate |date:'fullDate'}} ">
+              </div>
+
+          
+          </div>
+        </div>
+      </div>
+        <div class="col-md-12" *ngIf="this.inputHimSelf">
+        <div class="card">
+        
+          <div class="card-body">
+            <form [formGroup]="companyAddForm" (ngSubmit)="addCompany()">
+              <div class="row">
+                <div class="col-md-5 pr-1">
+                  <div class="form-group">
+                    <label>Firma Adı</label>
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Firma Adı">
+                  </div>
+                </div>
+                <div class="col-md-3 px-1">
+                  <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="text" class="form-control" placeholder="Telefon" id="telephone"
+                      formControlName="telephone">
+                  </div>
+                </div>
+                <div class="col-md-4 pl-1">
+                  <div class="form-group">
+                    <label for="email">E-Mail Adres</label>
+                    <input name="email" id="email" type="email" class="form-control" placeholder="E-Mail Adres"
+                      id="mail" formControlName="mail">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 pr-1">
+                  <div class="form-group">
+                    <label>Adres</label>
+                    <input type="text" class="form-control" placeholder="Adres" id="address" formControlName="address">
+                  </div>
+                </div>
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Mühendis Sayısı</label>
+                    <input type="text" class="form-control" placeholder="Mühendis Sayısı" id="personelCount"
+                      formControlName="personelCount">
+                  </div>
+                </div>
+              </div>
+              <label>Firma Tanıtımı</label>
+
+              <angular-editor [config]="editorConfig" id="description" formControlName="description"> </angular-editor>
+              <label>Staj Tarihi Seçin</label>
+              <div class="input-group" *ngFor="let item of dates">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" name="x" value="{{item.id}}" (change)="onItemChange(item)">
+                  </div>
+                </div>
+                <input type="text" class="form-control" readonly
+                  value="{{item.startDate |date:'fullDate'}} - {{item.finishDate |date:'fullDate'}} ">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text2" id="inputGroupFileAddon01">Upload</span>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" (change)="handleFileSelect($event)" id="productImage"
+                    accept="image/x-png,image/gif,image/jpeg">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" type="submit"
+                [disabled]="!companyAddForm.valid">Ekle</button>
+            </form>
+
+
+
+
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+<div class="main-panel" *ngIf="!isFull">
+  <div class="main-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="title">Staj Yapılan Firma Bilgileri</h5>
+          </div>
+          <div class="card-body">
+
+            <div class="alert alert-danger" style="position: relative;">
+
+              <span>
+                <b> Uyarı : </b> Daha önce firma seçimi yapılmış.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Firma Ekleme</h4>
+    <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong> <span class="text-primary">"{{this.selectedCompany.name}} "</span> firmasını seçmek istediğinizden emin misiniz?</strong></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" ngbAutofocus class="btn btn-danger" (click)="addCompanyWithSelect()">Ok</button>
+  </div>
+</ng-template>
